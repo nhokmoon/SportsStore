@@ -1,0 +1,61 @@
+﻿@model ProductAddViewModel
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <form method="post" asp-controller="Admin" asp-action="Add" enctype="multipart/form-data">
+        <h3 class="text-danger">Adding product</h3>
+        <div class="row">
+            <div class="col-sm-3">
+                <label class="col-form-label">Enter name:</label>
+            </div>
+            <div class="col-6">
+                <input class="form-control" asp-for="Name" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <label class="col-form-label">Category:</label>
+            </div>
+            <div class="col-6">
+                <select class="form-select" asp-for="Category">
+                    <option value="" aria-disabled="true">--Please choose category--</option>
+                    <option value="Chess">Chess</option>
+                    <option value="Soccer">Soccer</option>
+                    <option value="Watersports">Watersports</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <label class="col-form-label">Description:</label>
+            </div>
+            <div class="col-6">
+                <input class="form-control" asp-for="Description" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <label class="col-form-label">Price:</label>
+            </div>
+            <div class="col-6">
+                <input class="form-control" asp-for="Price" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <label class="col-form-label">ImageUrl:</label>
+            </div>
+            <div class="col-6">
+                <input class="form-control" asp-for="Photo" type="file" />
+            </div>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </form>
+</div>

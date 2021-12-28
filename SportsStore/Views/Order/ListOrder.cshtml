@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Order>
+@{
+    ViewData["Title"] = "ListOrder";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>List Cart</h1>
+<table class="table table-bordared table-striped">
+    <thead>
+        <th>Tên</th>
+        <th>Địa chỉ 1</th>
+        <th>Địa chỉ 2</th>
+        <th>Đã giao</th>
+        <th>Thành phố</th>
+        <th></th>
+    </thead>
+
+        <tbody>
+            @foreach (var o in Model)
+            {
+                if (o.Shipped == false)
+                {
+                    <tr>
+                        <td>@o.Name</td>
+                        <td>@o.Address1</td>
+                        <td>@o.Address2</td>
+                        <td>@o.Shipped</td>
+                        <td>@o.City</td>
+                        <td>
+                            <form asp-controller="Order" asp-action="MarkShipped" method="post">
+                                <input type="hidden" name="orderId" value="@o.OrderId" />
+                                <button type="submit" class="btn btn-success">Ship</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+</table>
+

@@ -1,0 +1,38 @@
+﻿@*@model IEnumerable<Product>*@
+@model ProductListViewModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>List of products</h1>
+<table class="table table-stdiped">
+    <thead>
+    <td>Name</td>
+    <td>Discription</td>
+    <td>Category</td>
+    <td>Price</td>
+    <td>ImageUrl</td>
+    <td>Action</td>
+    </thead>
+
+    <tbody>
+        @foreach (Product p in Model.Products)
+        {
+             <tr>
+                <td>@p.Name</td>
+                <td>@p.Description</td>
+                <td>@p.Category</td>
+                <td>@p.Price.ToString("c")</td>
+                <td>@p.ImageUrl</td>
+                <td>
+                    <a asp-action="Edit" asp-controller="Admin" asp-route-productId="@p.ProductId" class="btn-warning btn">Edit</a>
+                    <a asp-action="Delete" asp-controller="Admin" asp-route-productId="@p.ProductId" class="btn-danger btn">Delete</a>
+                </td>
+             </tr>
+         }
+        </tbody>
+</table>
+
+<a class="btn-primary btn text-center" asp-action="Add" asp-controller="Admin">Add product</a>

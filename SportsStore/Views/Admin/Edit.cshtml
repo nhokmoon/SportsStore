@@ -1,0 +1,62 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-sm">
+    <form method="post" asp-controller="Admin" asp-action="Edit" class="mx-sm-5">
+        <h3 class="text-danger">Edit product</h3>
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <input type="hidden" asp-for="ProductId" />
+        <div class="row m-1">
+            <div class="col-sm-4">
+                <label class="col-form-label">Enter name:</label>
+            </div>
+            <div class="col-sm-8">
+                <input class="form-control" asp-for="Name" />
+            </div>
+        </div>
+        <div class="row m-1">
+            <div class="col-sm-4">
+                <label class="col-form-label">Category:</label>
+            </div>
+            <div class="col-sm-8">
+                <select class="form-select" asp-for="Category">
+                    <option value="" aria-disabled="true">--Please choose category--</option>
+                    <option value="Chess">Chess</option>
+                    <option value="Soccer">Soccer</option>
+                    <option value="Watersports">Watersports</option>
+                </select>
+            </div>
+        </div>
+        <div class="row m-1">
+            <div class="col-sm-4">
+                <label class="col-form-label">Description:</label>
+            </div>
+            <div class="col-sm-8">
+                <input class="form-control" asp-for="Description" />
+            </div>
+        </div>
+        <div class="row m-1">
+            <div class="col-sm-4">
+                <label class="col-form-label">Price:</label>
+            </div>
+            <div class="col-sm-8">
+                <input class="form-control" asp-for="Price" />
+            </div>
+        </div>
+        <div class="row m-1">
+            <div class="col-sm-4">
+                <label class="col-form-label">ImageUrl:</label>
+            </div>
+            <div class="col-sm-8">
+                <input class="form-control" asp-for="ImageUrl" />
+            </div>
+        </div>
+        <div class="text-center m-1">
+            <button type="submit" class="btn btn-primary m-1">Save</button>
+            <a class="btn btn-warning m-1" asp-action="Index" asp-controller="Admin">Cancel</a>
+        </div>
+    </form>
+</div>

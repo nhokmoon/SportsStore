@@ -1,0 +1,26 @@
+﻿@*@model IEnumerable<Product>*@
+@model ProductListViewModel
+
+<h1>List of products</h1>
+<div class="row p-2">
+    @foreach (Product p in Model.Products)
+    {
+        var photoPath = "/images/" + p.ImageUrl;
+            <a  asp-action="Detail" asp-controller="Product" asp-route-productId="@p.ProductId" class="card card-outline-primary col-4">
+                <div class="embed-responsive embed-responsive-1by1">
+                    <img class="card-img-top embed-responsive-item p-5 m-auto" src="@photoPath" alt="not in stock"/>
+                </div>
+                <div class="card-block py-3">
+                    <h4>
+                        @p.Name
+                        <span class="badge badge-pill badge-info" style="float: right">
+                            @p.Price.ToString("c")
+                        </span>
+                    </h4>
+                    <small class="card-text p-1 font-italic">@p.Category</small>
+                    <div class="card-text p-1">@p.Description</div>
+                    <div class="btn-primary btn">View Detail</div>
+                </div>
+            </a>
+    }
+</div>
